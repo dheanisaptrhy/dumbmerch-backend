@@ -1,4 +1,5 @@
 const { user, profile } = require('../../models')
+const cloudinary = require('../utils/cloudinary');
 
 exports.getProfile = async (req, res) => {
     try {
@@ -33,8 +34,15 @@ exports.getProfile = async (req, res) => {
 exports.updateProfile = async (req, res) => {
     try {
         const { id } = req.params
+
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: 'dumbmerch',
+            use_filename: true,
+            unique_filename: false,
+          });
+
         const update = {
-            image: req?.file?.filename,
+            image: result.public_id,
             phone: req?.body?.phone,
             idUser: req.user.id,
             address: req?.body?.address,
@@ -64,7 +72,7 @@ exports.updateProfile = async (req, res) => {
             data: {
                 update,
                 newProfile,
-                image:req?.file?.filename
+                image:result.public_id
             }
         })
 

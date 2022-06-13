@@ -57,7 +57,7 @@ exports.register = async (req, res) => {
             phone:'-',
             gender:'-',
             address:'-',
-            image:'blankprofile.jpg',
+            image:'blankprofile_rja5lb.webp',
             idUser:newUser.id
         })
         // generate token
