@@ -21,6 +21,7 @@ exports.addProduct = async (req, res) => {
             desc: req.body.desc,
             price: req.body.price,
             image: result.public_id,
+            // image: req?.file?.filename,
             qty: req.body.qty,
             idUser: req.user.id
         }
@@ -198,6 +199,7 @@ exports.updateProduct = async (req, res) => {
             desc: req?.body?.desc,
             price: req?.body?.price,
             image: result.public_id,
+            // image: req?.file?.filename,
             qty: req.body.qty,
             idUser: req.user.id
         }

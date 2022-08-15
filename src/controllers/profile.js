@@ -3,11 +3,11 @@ const cloudinary = require('../utils/cloudinary');
 
 exports.getProfile = async (req, res) => {
     try {
-        const { id } = req.params
+        // const { id } = req.params
 
         let data = await profile.findOne({
             where: {
-                idUser: id
+                idUser: req.user.id
             },
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
@@ -42,7 +42,8 @@ exports.updateProfile = async (req, res) => {
           });
 
         const update = {
-            image: result.public_id,
+            // image: result.public_id,
+            image: req?.file?.filename,
             phone: req?.body?.phone,
             idUser: req.user.id,
             address: req?.body?.address,
@@ -72,7 +73,8 @@ exports.updateProfile = async (req, res) => {
             data: {
                 update,
                 newProfile,
-                image:result.public_id
+                // image:result.public_id
+                image:req?.file?.filename
             }
         })
 
