@@ -13,7 +13,7 @@ const server = http.createServer(app);
 //create server dari express
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000'
+        origin: process.env.SERVER_URL 
         //mengacu ke bagian client
     }
 })
