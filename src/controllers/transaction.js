@@ -120,7 +120,6 @@ exports.notification = async (req, res) => {
         } else if (transactionStatus == "settlement") {
             // TODO set transaction status on your database to 'success'
             // and response with 200 OK
-            updateProduct(orderId);
             updateTransaction("success", orderId);
             res.status(200);
         } else if (
