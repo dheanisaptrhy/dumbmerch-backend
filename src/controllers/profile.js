@@ -3,11 +3,11 @@ const cloudinary = require('../utils/cloudinary');
 
 exports.getProfile = async (req, res) => {
     try {
-        // const { id } = req.params
+        const { id } = req.params
 
         let data = await profile.findOne({
             where: {
-                idUser: req.user.id
+                idUser: id
             },
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
